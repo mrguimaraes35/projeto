@@ -2,24 +2,13 @@ import React from 'react';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createNativeStackNavigator } from '@react-navigation/native-stack'; 
-import HomeScreen from './src/screens/HomeScreen';
 import FormScreen from './src/screens/FormScreen';
-import DetailsScreen from './src/screens/DetailsScreen';
 import DashboardScreen from './src/screens/DashboardScreen';
 import { Ionicons } from '@expo/vector-icons';
+import StackRoutes from './src/routes/StackRoutes'; // <-- IMPORTADO AQUI
+
 
 const Tab = createBottomTabNavigator();
-const Stack = createNativeStackNavigator(); 
-
-function HomeStack() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Details" component={DetailsScreen} />
-    </Stack.Navigator>
-  );
-}
 
 export default function App() {
   return (
@@ -36,7 +25,7 @@ export default function App() {
             },
           })}
         >
-          <Tab.Screen name="Livros" component={HomeStack} />
+          <Tab.Screen name="Livros" component={StackRoutes} />
           <Tab.Screen name="Adicionar" component={FormScreen} />
           <Tab.Screen name="Dashboard" component={DashboardScreen} />
         </Tab.Navigator>
@@ -44,4 +33,3 @@ export default function App() {
     </PaperProvider>
   );
 }
-
